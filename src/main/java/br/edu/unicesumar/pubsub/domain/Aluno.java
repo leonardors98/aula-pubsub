@@ -1,5 +1,6 @@
 package br.edu.unicesumar.pubsub.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Aluno {
+public class Aluno implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +34,7 @@ public class Aluno {
     @NotBlank
     private String nome;
 
-    private LocalDate dataNascimento;
+    // private LocalDate dataNascimento;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "aluno_id")
