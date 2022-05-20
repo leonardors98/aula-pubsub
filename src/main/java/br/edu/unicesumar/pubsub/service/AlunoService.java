@@ -23,14 +23,6 @@ public class AlunoService {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @RabbitListener(queues= "fila-leonardo-souza", ackMode = "AUTO")
-    private void salvarAlunoPelaFila(Aluno aluno){
-        repository.save(aluno);
-    }
-
-    @Autowired
-    private RabbitTemplate rabbitTemplate;
-
     @RabbitListener(queues = "fila-igor-gorini", ackMode = "AUTO")
     private void salvarAlunoPelaFila(Aluno aluno){
         repository.save(aluno);
@@ -48,16 +40,10 @@ public class AlunoService {
         if (this.repository.existsByMatricula(aluno.getMatricula())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Matrícula já utilizada!");
         }
-<<<<<<< HEAD
 
         Aluno alunoSalvo = this.repository.save(aluno);
 
         this.rabbitTemplate.convertAndSend("fanout-exchange-teste","",alunoSalvo);
-=======
-        Aluno alunoSalvo = this.repository.save(aluno);
-
-        this.rabbitTemplate.convertAndSend("fanout-exchange-teste", "", alunoSalvo);
->>>>>>> a6ca68deb75465eccafd39a69217ad806e2220d2
 
         return alunoSalvo;
     }

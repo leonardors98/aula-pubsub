@@ -22,11 +22,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-<<<<<<< HEAD
 public class Aluno implements Serializable {
-=======
-public class Aluno implements Serializable{
->>>>>>> a6ca68deb75465eccafd39a69217ad806e2220d2
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
