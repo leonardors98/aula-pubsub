@@ -27,7 +27,11 @@ public class RabbitStartup {
     @PostConstruct
     private void adiciona() {
 
+<<<<<<< HEAD
         Queue filaTeste = new Queue("fila-leonardo-souza", true, false, false);
+=======
+        Queue filaTeste = new Queue("fila-igor-gorini", true, false, false);
+>>>>>>> a6ca68deb75465eccafd39a69217ad806e2220d2
         FanoutExchange fanoutExchangeTeste = new FanoutExchange("fanout-exchange-teste", true, false);
         Binding bindingTeste = new Binding(filaTeste.getName(), DestinationType.QUEUE, fanoutExchangeTeste.getName(), "", null);
         this.amqpAdmin.declareQueue(filaTeste);
@@ -38,6 +42,7 @@ public class RabbitStartup {
 
     }
 
+<<<<<<< HEAD
     // @RabbitListener(queues = "fila-teste", ackMode = "AUTO")
     // private void consumerFilaTeste(Aluno aluno){
     //     try {
@@ -47,4 +52,16 @@ public class RabbitStartup {
     //     }
     //     System.out.println(aluno);
     // }
+=======
+   /* @RabbitListener(queues = "fila-teste", ackMode = "AUTO")
+    private void consumerFilaTeste(Aluno aluno) {
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(aluno);
+    }*/
+
+>>>>>>> a6ca68deb75465eccafd39a69217ad806e2220d2
 }

@@ -28,6 +28,14 @@ public class AlunoService {
         repository.save(aluno);
     }
 
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @RabbitListener(queues = "fila-igor-gorini", ackMode = "AUTO")
+    private void salvarAlunoPelaFila(Aluno aluno){
+        repository.save(aluno);
+    }
+
     public Optional<Aluno> buscarPorId(Long id) {
         return repository.findById(id);
     }
@@ -40,10 +48,16 @@ public class AlunoService {
         if (this.repository.existsByMatricula(aluno.getMatricula())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Matrícula já utilizada!");
         }
+<<<<<<< HEAD
 
         Aluno alunoSalvo = this.repository.save(aluno);
 
         this.rabbitTemplate.convertAndSend("fanout-exchange-teste","",alunoSalvo);
+=======
+        Aluno alunoSalvo = this.repository.save(aluno);
+
+        this.rabbitTemplate.convertAndSend("fanout-exchange-teste", "", alunoSalvo);
+>>>>>>> a6ca68deb75465eccafd39a69217ad806e2220d2
 
         return alunoSalvo;
     }
