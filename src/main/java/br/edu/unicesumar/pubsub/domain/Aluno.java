@@ -34,7 +34,7 @@ public class Aluno implements Serializable {
     @NotBlank
     private String nome;
 
-    // private LocalDate dataNascimento;
+    private LocalDate dataNascimento;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "aluno_id")

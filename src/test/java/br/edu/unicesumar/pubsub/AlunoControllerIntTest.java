@@ -36,48 +36,48 @@ public class AlunoControllerIntTest {
     @Autowired
     private ObjectMapper objectMapper;
    
-    // @Test
-    // public void criarUmAlunoTest() throws Exception {
+    @Test
+    public void criarUmAlunoTest() throws Exception {
        
-    //     Aluno aluno = new Aluno(null, "123", "Teste", LocalDate.of(2000, 1, 1), new ArrayList<>());
+        Aluno aluno = new Aluno(null, "123", "Teste", LocalDate.of(2000, 1, 1), new ArrayList<>());
        
-    //     String jsonAluno = objectMapper.writeValueAsString(aluno);
+        String jsonAluno = objectMapper.writeValueAsString(aluno);
 
-    //      MvcResult andReturn = mockMvc.perform(post("/aluno")
-    //             .contentType(MediaType.APPLICATION_JSON)
-    //             .content(jsonAluno))
-    //     .andExpect(status().is2xxSuccessful())
-    //     .andReturn();
+         MvcResult andReturn = mockMvc.perform(post("/aluno")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonAluno))
+        .andExpect(status().is2xxSuccessful())
+        .andReturn();
        
-    //      String corpoDaResposta = andReturn.getResponse().getContentAsString();
+         String corpoDaResposta = andReturn.getResponse().getContentAsString();
          
-    //      Aluno alunoReposta = objectMapper.readValue(corpoDaResposta, Aluno.class);
+         Aluno alunoReposta = objectMapper.readValue(corpoDaResposta, Aluno.class);
 
-    //      assertNotNull(alunoReposta.getId());
+         assertNotNull(alunoReposta.getId());
          
-    //      mockMvc.perform(get("/aluno/" + alunoReposta.getId()))
-    //         .andExpect(status().is2xxSuccessful());
+         mockMvc.perform(get("/aluno/" + alunoReposta.getId()))
+            .andExpect(status().is2xxSuccessful());
                  
-    // }
+    }
    
-    // @Test
-    // public void criarUmOutroAlunoTest() throws Exception {
+    @Test
+    public void criarUmOutroAlunoTest() throws Exception {
        
-    //     Aluno aluno = new Aluno(null, "123", "Teste", LocalDate.of(2000, 1, 1), new ArrayList<>());
+        Aluno aluno = new Aluno(null, "123", "Teste", LocalDate.of(2000, 1, 1), new ArrayList<>());
        
-    //     String jsonAluno = objectMapper.writeValueAsString(aluno);
+        String jsonAluno = objectMapper.writeValueAsString(aluno);
 
-    //      MvcResult andReturn = mockMvc.perform(post("/aluno")
-    //             .contentType(MediaType.APPLICATION_JSON)
-    //             .content(jsonAluno))
-    //     .andExpect(status().is2xxSuccessful())
-    //     .andReturn();
+         MvcResult andReturn = mockMvc.perform(post("/aluno")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(jsonAluno))
+        .andExpect(status().is2xxSuccessful())
+        .andReturn();
        
-    //      String corpoDaResposta = andReturn.getResponse().getContentAsString();
+         String corpoDaResposta = andReturn.getResponse().getContentAsString();
          
-    //      Aluno alunoReposta = objectMapper.readValue(corpoDaResposta, Aluno.class);
+         Aluno alunoReposta = objectMapper.readValue(corpoDaResposta, Aluno.class);
 
-    //      assertNotNull(alunoReposta.getId());
+         assertNotNull(alunoReposta.getId());
        
-    // }
+    }
 }
