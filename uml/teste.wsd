@@ -1,0 +1,21 @@
+@startuml
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include DEVICONS/postgresql.puml
+
+Person(user, "Customer", "People that need products")
+Container(spa, "SPA", "angular", "The main interface that the customer interacts with", $sprite="angular")
+Container(api, "API", "java", "Handles all business logic", $sprite="java")
+ContainerDb(db, "Database", "Microsoft SQL", "Holds product, order and invoice information", $sprite="postgresql")
+
+Rel(user, spa, "Uses", "Browser")
+Rel(spa, api, "Request", "HTTP/JSON")
+Rel_R(api, db, "Reads/Writes")
+
+SHOW_FLOATING_LEGEND()
+
+
+@enduml
