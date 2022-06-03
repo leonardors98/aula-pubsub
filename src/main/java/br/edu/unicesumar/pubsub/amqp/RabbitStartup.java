@@ -25,11 +25,16 @@ public class RabbitStartup {
 
     @PostConstruct
     private void postConstruct() {
-        DirectExchange msgDirect = new DirectExchange("msg-direct", true, false);
         Queue myQueue = new Queue(Message.myUser, true, false, false);
+        DirectExchange msgDirect = new DirectExchange("msg-direct", true, false);
         Binding bindingMsgDirectMyQueue = new Binding(Message.myUser, DestinationType.QUEUE, msgDirect.getName(), Message.myUser, null);
 
-        // declare
+
+        this.amqpAdmin.declareQueue(myQueue);
+        this.amqpAdmin.declareExchange(msgDirect);
+        this.amqpAdmin.declareBinding(bindingMsgDirectMyQueue);
+
+        
     }
 
        /* 

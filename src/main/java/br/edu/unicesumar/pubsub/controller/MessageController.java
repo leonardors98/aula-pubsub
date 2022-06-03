@@ -2,6 +2,7 @@ package br.edu.unicesumar.pubsub.controller;
 
 import com.rabbitmq.client.RpcClient.Response;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +21,24 @@ public class MessageController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    @RabbitListener(queues = Message.myUser, ackMode = "AUTO")
+    private void listnerMessage(Message msg) {
+    
+        System.out.println(msg.getUser()+" : "+msg.getMessage());
+    }
+
     @PostMapping("/direct/{username}")
     public ResponseEntity<Void> sendDirectMessage(@PathVariable(name = "username") String username, @RequestBody Message msg) {
         
         System.out.println(msg);
-        /*
-
-        */
-
-
+        
+        this.rabbitTemplate.convertAndSend("msg-direct", username, msg );
+    
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/group/{group}")
+    private ResponseEntity<Void> 
 
 
 }

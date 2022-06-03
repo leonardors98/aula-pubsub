@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class Message {
     
-    public static final String myUser = "igor-gorini";
+    public static final String myUser = "leo-souza";
     private String message;
     private String user = Message.myUser;
     private String grupo;
