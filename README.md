@@ -9,3 +9,5 @@ chmod +x mvnw
 Criar banco, fazer no terminal:
     psql
     CREATE DATABASE AULA;
+
+https://crud-crud2.herokuapp.com/rabbit/consumer/leo-souza
